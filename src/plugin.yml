@@ -1,0 +1,15 @@
+name: Netyeti
+version: 0.1
+description: Netyeti plugin for world domination.
+author: Netyeti
+main: me.netyeti.NetyetiPlugin
+
+commands:
+  hello:
+    description: Just testing out commands.
+    usage: /hello
+  equip:
+    description: Equips the player with stuff!
+    usage: /equip
+  ny:
+    usage: /ny test
