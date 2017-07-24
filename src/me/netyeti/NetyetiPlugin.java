@@ -5,6 +5,7 @@ import me.netyeti.commands.Hello;
 import me.netyeti.events.block.BlockBreak;
 import me.netyeti.events.player.PlayerChat;
 import me.netyeti.events.player.PlayerJoin;
+import me.netyeti.other.ScoreboardObjectiveGold;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -20,7 +21,6 @@ public class NetyetiPlugin extends JavaPlugin {
         registerConfig();
         registerCommands();
         registerEvents();
-
     }
 
     @Override
@@ -36,6 +36,8 @@ public class NetyetiPlugin extends JavaPlugin {
 
         String welcomeMsg = getConfig().getString("Welcome Message");
         pm.registerEvents(new PlayerJoin(welcomeMsg), this);
+
+        registerScoreboard(pm);
     }
 
     public void registerCommands() {
@@ -49,6 +51,10 @@ public class NetyetiPlugin extends JavaPlugin {
     public void registerConfig() {
         getConfig().options().copyDefaults(true);
         saveConfig();
+    }
+
+    private void registerScoreboard(PluginManager pm) {
+        pm.registerEvents(new ScoreboardObjectiveGold(this), this);
     }
 
 }
